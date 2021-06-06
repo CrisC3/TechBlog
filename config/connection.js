@@ -14,7 +14,8 @@ if (jawsDbUrl) {
 
 } else {
 
-    // Assigns variable to use local MySQL
+    // Assigns variable to use local
+    // MySQL and instantiate Sequelize
     sequelize = new Sequelize(
         process.env.DB_NAME,
         process.env.DB_USER,
