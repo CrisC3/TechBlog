@@ -1,5 +1,5 @@
 {
-  "name": "tech-blog",
+  "name": "mvc-tech-blog",
   "version": "1.0.0",
   "description": "Technology blog",
   "main": "server.js",
