@@ -13,6 +13,12 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         }
+    },
+    {
+        sequelize,
+        timestamps: true,
+        freezeTableName: true,
+        underscored: true
     }
 );
 
