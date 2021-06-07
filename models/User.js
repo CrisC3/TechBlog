@@ -24,6 +24,13 @@ User.init(
                 len: [3]
             }
         },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+              len: [8],
+            },
+        }
     },
     {
         sequelize,
