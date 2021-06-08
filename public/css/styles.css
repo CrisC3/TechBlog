@@ -35,3 +35,12 @@ body {
     border-radius: .2rem;
     box-shadow: 6px 5px #a1a0a1;
 }
+
+.card-header {
+    color: #ccdad1;
+    background-color: #201110;
+}
+
+.card-body {
+    padding: 1%;
+}
