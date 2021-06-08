@@ -13,7 +13,8 @@ router.get("/", async (req, res) => {
                     model: User,
                     attributes: ['username']
                 }
-            ]
+            ],
+            raw: true
         });
 
         res.status(200).json(blogData);
