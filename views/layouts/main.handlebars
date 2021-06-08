@@ -12,11 +12,13 @@
                 <nav class="topNav">
                     <a href="/" class="navLinks">Home</a>
                     <a href="/dashboard" class="navLinks">Dashboard</a>
+
                     {{#if loggedIn}}
                         <a href="/" class="navLinks">Logout</a>
                     {{else}}
                         <a href="/login" class="navLinks">Login</a>
                     {{/if}}
+
                 </nav>
                 <div class="subheader">
                     <h1>The Tech Blog</h1>
