@@ -36,9 +36,19 @@ body {
     box-shadow: 6px 5px #a1a0a1;
 }
 
+.card {
+    border-style: solid;
+    border-color: #201110;
+    margin: 1rem;
+}
+
 .card-header {
     color: #ccdad1;
     background-color: #201110;
+}
+
+.card-header > h1 {
+    margin: 0rem;
 }
 
 .card-body {
