@@ -17,10 +17,6 @@ router.get("/", async (req, res) => {
             raw: true
         });
 
-        // res.status(200).json(blogData);
-
-        console.log(blogData);
-
         res.render("homepage", {blogData});
 
     } catch (error) {
