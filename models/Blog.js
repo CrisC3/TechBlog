@@ -15,7 +15,6 @@ Blog.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
             validate: {
                 isAlphanumeric: true,
                 notNull: true,
@@ -27,7 +26,9 @@ Blog.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-              len: [8],
+                notNull: true,
+                notEmpty: true,
+                len: [2],
             },
         },
         user_id: {
