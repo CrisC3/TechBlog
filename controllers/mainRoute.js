@@ -19,7 +19,9 @@ router.get("/", async (req, res) => {
 
         // res.status(200).json(blogData);
 
-        res.render("homepage");
+        console.log(blogData);
+
+        res.render("homepage", {blogData});
 
     } catch (error) {
         res.status(500).json(error);
