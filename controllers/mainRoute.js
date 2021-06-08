@@ -17,7 +17,9 @@ router.get("/", async (req, res) => {
             raw: true
         });
 
-        res.status(200).json(blogData);
+        // res.status(200).json(blogData);
+
+        res.render("homepage");
 
     } catch (error) {
         res.status(500).json(error);
