@@ -11,9 +11,8 @@
             <header class="mainHeader">
                 <nav class="topNav">
                     <a href="/" class="navLinks">Home</a>
-                    <a href="/dashboard" class="navLinks">Dashboard</a>
-
-                    {{#if loggedIn}}
+                     {{#if loggedIn}}
+                        <a href="/dashboard" class="navLinks">Dashboard</a>
                         <a href="/" class="navLinks">Logout</a>
                     {{else}}
                         <a href="/login" class="navLinks">Login</a>
