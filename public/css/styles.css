@@ -1,0 +1,37 @@
+body {
+    background-color: #d9ead3;
+}
+
+.mainHeader {
+    padding: 3% 4%;
+    background-color: #201110;
+    color: #ccdad1;
+}
+
+.mainHeader p {
+    max-width: 75%;
+}
+
+.topNav {
+    padding: 10px;
+    line-height: 1.25;
+    float: top;
+}
+
+.navLinks {
+    color: white;
+    font-size: 32px;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.subheader {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #ccdad1;
+    color: #201110;
+    padding: 0 10px;
+    display: inline-block;
+    border-radius: .2rem;
+    box-shadow: 6px 5px #a1a0a1;
+}
