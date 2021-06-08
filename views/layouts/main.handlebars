@@ -4,16 +4,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Technology Blog</title>
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
         <div class="container">
             
-            <header>
-                <nav>
-                    <a href="/homepage">Home</a>
-                    <a href="/dashboard">Work</a>
+            <header class="mainHeader">
+                <nav class="topNav">
+                    <a href="/" class="navLinks">Home</a>
+                    <a href="/dashboard" class="navLinks">Dashboard</a>
+                    {{#if loggedIn}}
+                        <a href="/" class="navLinks">Logout</a>
+                    {{else}}
+                        <a href="/login" class="navLinks">Login</a>
+                    {{/if}}
                 </nav>
+                <div class="subheader">
+                    <h1>The Tech Blog</h1>
+                </div>
             </header>
+            
             
             <!-- Render the sub layout -->
             {{{ body }}}
