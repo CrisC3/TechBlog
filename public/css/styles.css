@@ -86,3 +86,11 @@ body {
 .personal-posts {
     background-color: gray;
 }
+
+.delete-post-btn {
+    background-color:lightcoral ;
+}
+
+.update-post-btn {
+    background-color: lightblue;
+}

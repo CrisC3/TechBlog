@@ -95,6 +95,10 @@ router.get("/dashboard/add", async (req, res) => {
     res.render('add-post', {loggedIn: req.session.logged_in, subHeading: "New Blog" });
 });
 
+router.get("/dashboard/edit/:id", async (req, res) => {
+    res.render('edit-post', {loggedIn: req.session.logged_in, subHeading: "Edit Blog" });
+});
+
 router.get("/login", async (req, res) => {
     
     try {
