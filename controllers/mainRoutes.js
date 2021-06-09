@@ -80,6 +80,10 @@ router.get("/dashboard", async (req, res) => {
     }
 });
 
+router.get("/dashboard/add", async (req, res) => {
+    res.render('add-post', {loggedIn: req.session.logged_in, subHeading: "New Blog" });
+});
+
 router.get("/login", async (req, res) => {
     
     try {
