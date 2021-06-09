@@ -36,7 +36,7 @@ npm start
 
 ## Contributing
 This is open source project. Feel free to contribute😊.  
-Currently, the application is still work in progress.
+Currently, the application is still in development.
 
 ## Tests
 Run "npm start" or "node server.js" in the PowerShell/Bash.
