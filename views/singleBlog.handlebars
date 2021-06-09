@@ -9,13 +9,13 @@
         </p>
         {{'Comments.comment'}}
     </div>
-    {{#if blogData.comments}}
-        <div class="comments">
-            {{#each blogData as |blog| }}
+    {{#each blogData as |blog| }}
+        {{!-- {{#if blog.comments}} --}}
+            <div class="comments">
                 {{> comments blog}}
-            {{/each}}
-        </div>
-    {{/if}}
+            </div>
+        {{!-- {{/if}} --}}
+    {{/each}}
     {{#if loggedIn}}
         <form class="comment-form">
             <div>
