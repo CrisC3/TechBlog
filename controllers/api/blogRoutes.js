@@ -36,7 +36,27 @@ router.delete('/:id', withAuth, async (req, res) => {
     } catch (err) {
       res.status(500).json(err);
     }
-  });
+});
   
-  module.exports = router;
+router.put('/:id', withAuth, async (req, res) => {
+  
+  try {
+    const dish = await Blog.update(
+      {
+        title: req.body.title,
+		content: req.body.content
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.status(200).json(dish);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
   

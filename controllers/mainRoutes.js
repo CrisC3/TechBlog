@@ -96,7 +96,20 @@ router.get("/dashboard/add", async (req, res) => {
 });
 
 router.get("/dashboard/edit/:id", async (req, res) => {
-    res.render('edit-post', {loggedIn: req.session.logged_in, subHeading: "Edit Blog" });
+
+    const post = await Blog.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: ['id',
+            'title',
+            'content',
+            'created_at'
+        ],
+        raw: true
+    });
+
+    res.render('edit-post', {post, loggedIn: req.session.logged_in, subHeading: "Edit Blog" });
 });
 
 router.get("/login", async (req, res) => {
