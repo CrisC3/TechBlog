@@ -1,6 +1,7 @@
 // Local variables to call on packages
 const router = require('express').Router();
 const {User, Blog, Comment} = require("../models");
+const withAuth = require('../utils/auth');
 
 router.get("/", async (req, res) => {
     
@@ -17,7 +18,7 @@ router.get("/", async (req, res) => {
             raw: true
         });
 
-        res.render("homepage", {blogData});
+        res.render("homepage", {blogData, logged_in: req.session.logged_in });
 
     } catch (error) {
         res.status(500).json(error);

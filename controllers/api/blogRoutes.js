@@ -1,29 +1,43 @@
 const router = require('express').Router();
 const { User, Blog, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-// GET /api/blogs
-router.get('/', async (req, res) => {
-    
+router.post("/", withAuth, async (req, res) => {
+
     try {
-
-        const blogData = await Blog.findAll();
-
         
+        const newBlog = await Blog.create({
+            ...req.body,
+            user_id: req.session.user_id,
+        });
+        
+        res.status(200).json(newBlog);
+
     } catch (error) {
-        
+        res.status(400).json(err);
     }
+
 });
 
-
-// GET /api/users
-router.get('/', (req, res) => {
-    // Access our User model and run .findAll() method
-    User.findAll({
-        attributes: { exclude: ['password'] }
-    })
-      .then(dbUserData => res.json(dbUserData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+      const blogData = await Blog.destroy({
+        where: {
+          id: req.params.id,
+          user_id: req.session.user_id,
+        },
       });
+  
+      if (!blogData) {
+        res.status(404).json({ message: 'No blog found with this id!' });
+        return;
+      }
+  
+      res.status(200).json(blogData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   });
+  
+  module.exports = router;
+  
