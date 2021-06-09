@@ -24,10 +24,10 @@ const seedDatabase = async () => {
     // Add the blogs from JSON file and also push to array variable [blogs]
     for (const blog of blogData) {
         
-       blogs.push(
-           await Blog.create({
-               ...blog,
-               user_id: users[Math.floor(Math.random() * users.length)].id
+        blogs.push(
+            await Blog.create({
+                ...blog,
+                user_id: users[Math.floor(Math.random() * users.length)].id
             })
         );
     }
@@ -39,7 +39,7 @@ const seedDatabase = async () => {
             ...comment,
             blog_id: blogs[Math.floor(Math.random() * blogs.length)].id,
             user_id: users[Math.floor(Math.random() * users.length)].id,
-        });
+        })
     }
     
     // Terminate script

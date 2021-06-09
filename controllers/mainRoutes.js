@@ -18,6 +18,8 @@ router.get("/", async (req, res) => {
             raw: true
         });
 
+        // console.log(blogData);
+
         res.render("homepage", {blogData, loggedIn: req.session.logged_in, subHeading: "The Tech Blog" });
 
     } catch (error) {
@@ -27,19 +29,23 @@ router.get("/", async (req, res) => {
 
 router.get("/Blog/:id", async (req, res) => {
 
-    const blogData = await Blog.findByPk(req.params.id, {
-        include: [
-            {
-              model: Comment,
-              attributes: ['comment'],
-            },
-            {
-                model: User,
-                attributes: ['username'],
-              },
-          ],
-          raw: true
+    const blogData = await Blog.findByPk(req.params.id, { raw: true });
+    const commentdata = await Comment.findAll({
+        where: {
+            blog_id: blogData.id
+        },
+        raw: true
     });
+    const Userdata = await User.findByPk(blogData.user_id, {
+        attributes: {
+            exclude: ['password']
+        },
+        raw: true
+    });
+    
+    blogData.username = Userdata.username;
+    blogData.comments = [];
+    blogData.comments.push(...commentdata);
 
     console.log(blogData);
 
