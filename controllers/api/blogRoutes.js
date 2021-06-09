@@ -23,9 +23,8 @@ router.delete('/:id', withAuth, async (req, res) => {
     try {
       const blogData = await Blog.destroy({
         where: {
-          id: req.params.id,
-          user_id: req.session.user_id,
-        },
+          id: req.params.id
+        }
       });
   
       if (!blogData) {
