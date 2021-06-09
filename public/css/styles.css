@@ -63,3 +63,21 @@ body {
 .comment-input {
     width: 100% !important;
 }
+
+.comment {
+    border-style: solid;
+    border-color: #201110;
+    margin: 1rem;
+}
+
+.comment-body {
+    padding: 1rem;
+    background-color: white;
+}
+
+.comment-header {
+    height: 2rem;
+    width: 100%;
+    background-color: #201110;
+    
+}

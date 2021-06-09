@@ -1,6 +1,7 @@
 // Local variables to call on packages
 const router = require('express').Router();
 const {User, Blog, Comment} = require("../models");
+const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get("/", async (req, res) => {
@@ -30,22 +31,27 @@ router.get("/", async (req, res) => {
 router.get("/Blog/:id", async (req, res) => {
 
     const blogData = await Blog.findByPk(req.params.id, { raw: true });
-    const commentdata = await Comment.findAll({
+    
+    const commentData = await Comment.findAll({
         where: {
             blog_id: blogData.id
         },
         raw: true
     });
-    const Userdata = await User.findByPk(blogData.user_id, {
+    const blogUsername = await User.findByPk(blogData.user_id, {
         attributes: {
             exclude: ['password']
         },
         raw: true
     });
-    
-    blogData.username = Userdata.username;
+
+    blogData.username = blogUsername.username;
     blogData.comments = [];
-    blogData.comments.push(...commentdata);
+
+    for (const iterator of commentData) {
+        iterator.username = (await User.findByPk(iterator.user_id, {attributes: ['username'], raw: true })).username;
+        blogData.comments.push(iterator);
+    }
 
     console.log(blogData);
 

@@ -2,21 +2,20 @@
     <div class="card">
         <div class="card-header">
             <h1 class="Blog-title">{{blogData.title}}</h1>
-            <p>Posted by {{'User.username'}} on {{format_date blogData.createdAt}}</p>
+            <p>Posted by {{blogData.username}} on {{format_date blogData.createdAt}}</p>
         </div>
         <p class="card-body">
             {{blogData.content}}
         </p>
         {{'Comments.comment'}}
     </div>
-    <div class="comments">
-        {{#each blogData as |blog| }}
-        {{!-- {{#if blog.Comments}} --}}
-            {{> comments blog}}
-            {{!-- {{/if}} --}}
-        {{/each}}
-        
-    </div>
+    {{#if blogData.comments}}
+        <div class="comments">
+            {{#each blogData as |blog| }}
+                {{> comments blog}}
+            {{/each}}
+        </div>
+    {{/if}}
     {{#if loggedIn}}
         <form class="comment-form">
             <div>

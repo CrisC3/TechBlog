@@ -1,14 +1,17 @@
-{{#if 'Comments.comment'}}
+
   <div class="comments">
     {{#each this}}
     <section class="comment">
-      {{!-- <div class="meta">
-        {{user.username}} on {{format_date created_at}}
-      </div> --}}
-      <div class="text">
-        {{'Comments.comment'}}
+      <div class="comment-header"></div>
+      <div class="comment-body">
+        <div class="comment-content">
+        {{comment}}
+      </div>
+      <br>
+      <div class="meta">
+        - {{username}} on {{format_date createdAt}}
+      </div>
       </div>
     </section>
     {{/each}}
   </div>
-{{/if}}
