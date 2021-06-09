@@ -4,16 +4,16 @@ async function commentFormHandler(event) {
     const newComment = document.querySelector('textarea[name="user-input"]').value.trim();
 
     const response = await fetch('/api/comments', {
-                method: 'POST',
-                body: JSON.stringify({
-                    newComment
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
+        method: 'POST',
+        body: JSON.stringify({
+            newComment
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
     
-            location.reload();
+    document.location.reload();
 
 }
 
