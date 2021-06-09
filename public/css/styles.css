@@ -76,8 +76,9 @@ body {
 }
 
 .comment-header {
-    height: 2rem;
+    /* height: 2rem; */
     width: 100%;
+    color:white;
     background-color: #201110;
     
 }

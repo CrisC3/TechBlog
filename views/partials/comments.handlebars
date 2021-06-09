@@ -2,14 +2,16 @@
   <div class="comments">
     {{#each this}}
     <section class="comment">
-      <div class="comment-header"></div>
+      <div class="comment-header">
+        <h1>User Comment</h1>
+      </div>
       <div class="comment-body">
         <div class="comment-content">
         {{comment}}
       </div>
       <br>
       <div class="meta">
-        - {{username}} on {{format_date createdAt}}
+        &ndash; {{username}} on {{format_date createdAt}}
       </div>
       </div>
     </section>
