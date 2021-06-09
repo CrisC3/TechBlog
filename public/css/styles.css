@@ -91,6 +91,6 @@ body {
     background-color:lightcoral ;
 }
 
-.update-post-btn {
+.update-post-btn, .create-post-btn {
     background-color: lightblue;
 }
