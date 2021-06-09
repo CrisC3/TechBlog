@@ -64,7 +64,7 @@ router.get("/Blog/:id", async (req, res) => {
         res.render("singleBlog", {
             blogData,
             loggedIn: req.session.logged_in,
-            subHeading: "Blog and comments"
+            subHeading: "Comments"
         });
     });
 });
