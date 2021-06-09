@@ -18,7 +18,6 @@ router.get("/", async (req, res) => {
             raw: true
         });
 
-        console.log(`req.session.logged_in is == ${req.session.logged_in}`);
         res.render("homepage", {blogData, loggedIn: req.session.logged_in, subHeading: "The Tech Blog" });
 
     } catch (error) {
@@ -26,13 +25,37 @@ router.get("/", async (req, res) => {
     }
 });
 
-// router.get()
+router.get("/Blog/:id", async (req, res) => {
+
+    const blogData = await Blog.findByPk(req.params.id, {
+        include: [
+            {
+              model: Comment,
+              attributes: ['comment'],
+            },
+            {
+                model: User,
+                attributes: ['username'],
+              },
+          ],
+          raw: true
+    });
+
+    console.log(blogData);
+
+    res.render("singleBlog", {
+        blogData,
+        loggedIn: req.session.logged_in,
+        subHeading: "The Tech Blog"
+    });
+
+});
 
 router.get("/dashboard", async (req, res) => {
     
     try {
         
-        res.render("dashboard", {loggedIn: req.session.logged_in, subHeading: "Dashboard" });
+        res.render("dashboard", {loggedIn: req.session.logged_in, subHeading: "Your Dashboard" });
 
     } catch (error) {
         res.status(500).json(error);
