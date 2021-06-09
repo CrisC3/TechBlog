@@ -36,13 +36,22 @@ npm start
 
 ## Contributing
 This is open source project. Feel free to contribute😊.  
-Currently, the application is still in development.
 
 ## Tests
 Run "npm start" or "node server.js" in the PowerShell/Bash.
 
+## Screenshots
+![Website main page no login](./screenshots/01-mainpage-nologin.jpg)  
+![Login signup page](./screenshots/02-login-signup.jpg)  
+![Website main page with login](./screenshots/03-mainpage-login.jpg)  
+![Blog post with comments](./screenshots/04-invidual-blog-with-comments.jpg)  
+![Blog post add comments](./screenshots/05-add-new-comment.jpg)  
+![Dashboard main page](./screenshots/06-dashboard.jpg)  
+![Add new blog](./screenshots/07-new-blog-post.jpg)  
+![Edit existing blog](./screenshots/08-edit-blog-post.jpg)  
+
 ## Links
-Live/Production = N/A  
+Live/Production = https://techblogc3.herokuapp.com/  
 Repository = https://github.com/CrisC3/TechBlog  
 
 ## Questions
