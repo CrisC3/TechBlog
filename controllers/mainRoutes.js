@@ -18,7 +18,8 @@ router.get("/", async (req, res) => {
             raw: true
         });
 
-        res.render("homepage", {blogData, logged_in: req.session.logged_in });
+        console.log(`req.session.logged_in is == ${req.session.logged_in}`);
+        res.render("homepage", {blogData, loggedIn: req.session.logged_in });
 
     } catch (error) {
         res.status(500).json(error);
