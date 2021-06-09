@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
         });
 
         console.log(`req.session.logged_in is == ${req.session.logged_in}`);
-        res.render("homepage", {blogData, loggedIn: req.session.logged_in });
+        res.render("homepage", {blogData, loggedIn: req.session.logged_in, subHeading: "The Tech Blog" });
 
     } catch (error) {
         res.status(500).json(error);
@@ -30,7 +30,7 @@ router.get("/dashboard", async (req, res) => {
     
     try {
         
-        res.render("dashboard", {loggedIn: req.session.logged_in });
+        res.render("dashboard", {loggedIn: req.session.logged_in, subHeading: "Dashboard" });
 
     } catch (error) {
         res.status(500).json(error);
@@ -41,7 +41,7 @@ router.get("/login", async (req, res) => {
     
     try {
         
-        res.render("login");
+        res.render("login", {subHeading: "Login / Signup" });
 
     } catch (error) {
         res.status(500).json(error);
