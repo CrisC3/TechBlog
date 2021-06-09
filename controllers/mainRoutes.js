@@ -5,7 +5,7 @@ const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get("/", async (req, res) => {
-    
+    console.log(req.session);
     try {
         
         // Get all blogs JOIN with user table
@@ -54,13 +54,19 @@ router.get("/Blog/:id", async (req, res) => {
     }
 
     console.log(blogData);
+    
+    req.session.save(() => {
+        
+       req.session.blog_id = req.params.id;
 
-    res.render("singleBlog", {
-        blogData,
-        loggedIn: req.session.logged_in,
-        subHeading: "The Tech Blog"
+        console.log(req.session);
+
+        res.render("singleBlog", {
+            blogData,
+            loggedIn: req.session.logged_in,
+            subHeading: "The Tech Blog"
+        });
     });
-
 });
 
 router.get("/dashboard", async (req, res) => {
