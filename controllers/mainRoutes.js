@@ -72,8 +72,19 @@ router.get("/Blog/:id", async (req, res) => {
 router.get("/dashboard", async (req, res) => {
     
     try {
+
+        const userBlog = await Blog.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
+            raw: true
+        });
+
+        console.log("============================");
+        console.log(userBlog);
+        console.log("============================");
         
-        res.render("dashboard", {loggedIn: req.session.logged_in, subHeading: "Your Dashboard" });
+        res.render("dashboard", {userBlog, loggedIn: req.session.logged_in, subHeading: "Your Dashboard" });
 
     } catch (error) {
         res.status(500).json(error);

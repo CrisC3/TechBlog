@@ -1,8 +1,8 @@
 
-{{#if posts.length}}
+{{#if userBlog.length}}
 <section>
   <h2>Your Posts</h2>
-    {{#each posts as |post|}}
+    {{#each userBlog as |post|}}
       {{> dashboard-postinfo post}}
     {{/each}}
 
@@ -13,4 +13,4 @@
   <a class="link" href="/dashboard/add">+ New Post</a>
 </button>
 
-<script src="/js/add-post.js"></script>
+{{!-- <script src="/js/add-post.js"></script> --}}
