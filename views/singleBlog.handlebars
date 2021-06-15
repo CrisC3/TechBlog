@@ -7,22 +7,20 @@
         <p class="card-body">
             {{blogData.content}}
         </p>
-        {{'Comments.comment'}}
     </div>
-    {{#each blogData as |blog| }}
-        {{!-- {{#if blog.comments}} --}}
-            <div class="comments">
-                {{> comments blog}}
-            </div>
-        {{!-- {{/if}} --}}
+    {{!-- {{log blogData.username}} --}}
+    {{#each blogData.Comments as |comment| }}
+        <div class="comments">
+            {{> comments username=../blogData.username loggedIn=../loggedIn owner=comment.owner }}
+        </div>
     {{/each}}
     {{#if loggedIn}}
         <form class="comment-form">
             <div>
-                <textarea class="comment-input" name="user-input"></textarea>
+                <textarea id="newComment" data-blog="{{blogData.id}}" data-user="{{userId}}" class="comment-new" style="width: 100%;" name="user-input"></textarea>
             </div>
             <div>
-                <button class="button" type="submit">add comment</button>
+                <button class="button add-btn" type="submit">add comment</button>
             </div>
         </form>
         <script src="/js/comment.js"></script>

@@ -24,6 +24,24 @@ router.post("/", withAuth, async (req, res) => {
 
 });
 
+router.put("/:id", withAuth, async (req, res) => {
+
+  try {
+    
+    const update = await Comment.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    });
+
+    console.log(update);
+    
+    } catch (error) {
+        res.status(400).json(error);
+    }
+
+});
+
 router.delete('/:id', withAuth, async (req, res) => {
     try {
       const commentData = await Comment.destroy({

@@ -1,7 +1,6 @@
 // Local variables to call on packages
 const router = require('express').Router();
 const {User, Blog, Comment} = require("../models");
-const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get("/", async (req, res) => {
@@ -30,40 +29,33 @@ router.get("/", async (req, res) => {
 
 router.get("/Blog/:id", async (req, res) => {
 
-    const blogData = await Blog.findByPk(req.params.id, { raw: true });
+    const blogData = await Blog.findByPk(req.params.id, {
+        include: [
+            {
+                model: Comment
+            }
+        ],
+        order: [
+            ["updatedAt", "ASC"]
+        ]
+    });
     
-    const commentData = await Comment.findAll({
-        where: {
-            blog_id: blogData.id
-        },
-        raw: true
-    });
-    const blogUsername = await User.findByPk(blogData.user_id, {
-        attributes: {
-            exclude: ['password']
-        },
-        raw: true
-    });
+    const blog = blogData.get({plain: true});
+    const user = await User.findByPk(blogData.id, { attributes: ["username"]});
+    blog.username = user.username;
 
-    blogData.username = blogUsername.username;
-    blogData.comments = [];
-
-    for (const iterator of commentData) {
-        iterator.username = (await User.findByPk(iterator.user_id, {attributes: ['username'], raw: true })).username;
-        blogData.comments.push(iterator);
+    for (const comment of blog.Comments) {
+        comment.owner = (comment.user_id == req.session.user_id) ? true : false;
     }
-
-    console.log(blogData);
     
     req.session.save(() => {
         
        req.session.blog_id = req.params.id;
 
-        console.log(req.session);
-
         res.render("singleBlog", {
-            blogData,
+            blogData: blog,
             loggedIn: req.session.logged_in,
+            userId: req.session.user_id,
             subHeading: "Comments"
         });
     });
