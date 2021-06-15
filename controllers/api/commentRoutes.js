@@ -13,8 +13,6 @@ router.post("/", withAuth, async (req, res) => {
             user_id: req.session.user_id,
             comment: newCommentInput
         });
-
-        console.log(newComment);
         
         res.status(200).json(newComment);
 
@@ -34,8 +32,6 @@ router.put("/:id", withAuth, async (req, res) => {
       }
     });
 
-    console.log(update);
-    
     } catch (error) {
         res.status(400).json(error);
     }
