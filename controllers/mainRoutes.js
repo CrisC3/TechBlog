@@ -4,7 +4,7 @@ const {User, Blog, Comment} = require("../models");
 const withAuth = require('../utils/auth');
 
 router.get("/", async (req, res) => {
-    console.log(req.session);
+
     try {
         
         // Get all blogs JOIN with user table
@@ -41,13 +41,14 @@ router.get("/Blog/:id", async (req, res) => {
     });
     
     const blog = blogData.get({plain: true});
-    const user = await User.findByPk(blogData.id, { attributes: ["username"]});
+    const user = await User.findByPk(blogData.user_id, { attributes: ["username"]});
+    
     blog.username = user.username;
 
     for (const comment of blog.Comments) {
         comment.owner = (comment.user_id == req.session.user_id) ? true : false;
     }
-    
+
     req.session.save(() => {
         
        req.session.blog_id = req.params.id;
@@ -72,10 +73,6 @@ router.get("/dashboard", async (req, res) => {
             raw: true
         });
 
-        console.log("============================");
-        console.log(userBlog);
-        console.log("============================");
-        
         res.render("dashboard", {userBlog, loggedIn: req.session.logged_in, subHeading: "Your Dashboard" });
 
     } catch (error) {
