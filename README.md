@@ -52,7 +52,7 @@ Run "npm start" or "node server.js" in the PowerShell/Bash.
 
 ## Links
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://techblogc3.herokuapp.com/)  
-Live/Production = https://techblogc3.herokuapp.com/ 
+Live/Production = https://techblogc3.herokuapp.com/  
 Repository = https://github.com/CrisC3/TechBlog  
 
 ## Questions
