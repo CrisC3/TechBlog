@@ -51,7 +51,8 @@ router.get("/Blog/:id", async (req, res) => {
 
     // Adding all comments.owner (T/F), based on the req.session.user_id
     for (const comment of blog.Comments) {
-        comment.owner = (comment.user_id == req.session.user_id) ? true : false;
+        comment.isCommentOwner = (comment.user_id == req.session.user_id) ? true : false;
+        comment.CommentOwner = (await User.findByPk(comment.user_id, { attributes: ["username"]})).username;
     }
 
     // Render handlebar with req.sessions

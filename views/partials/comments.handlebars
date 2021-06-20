@@ -13,13 +13,13 @@
       name="user-update"
       style="width:100%; min-height:100px; border-style:none; word-wrap: break-word; word-break: break-all;"
       word-wrap: break-word
-      {{#unless owner}}disabled{{/unless}}>{{comment}}</textarea>
+      {{#unless isCommentOwner}}disabled{{/unless}}>{{comment}}</textarea>
     <br>
     <div class="meta">
-      &ndash; {{username}} on {{format_date createdAt}}
+      &ndash; {{CommentOwner}} on {{format_date createdAt}}
     </div>
     {{#if loggedIn}}
-      {{#if owner}}
+      {{#if isCommentOwner}}
         <br>
         {{!-- <div> --}}
           {{!-- <button class="button upd-btn" type="submit">update</button>

@@ -9,9 +9,11 @@
         </p>
     </div>
     {{!-- {{log blogData.username}} --}}
+    {{!-- {{log this}} --}}
     {{#each blogData.Comments as |comment| }}
+        {{!-- {{log this}}     --}}
         <div class="comments">
-            {{> comments username=../blogData.username loggedIn=../loggedIn owner=comment.owner }}
+            {{> comments username=../blogData.username loggedIn=../loggedIn }}
         </div>
     {{/each}}
     {{#if loggedIn}}
